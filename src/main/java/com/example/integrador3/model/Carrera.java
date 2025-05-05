@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -21,4 +23,7 @@ public class Carrera {
 
     @Column
     private int duracion;
+
+    @ManyToMany(mappedBy = "carreras")
+    private List<Estudiante> estudiantes;
 }
