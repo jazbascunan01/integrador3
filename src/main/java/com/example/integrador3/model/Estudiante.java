@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Estudiante {
     @Id
-    private int dni;
+    private Integer dni;
     @Column(nullable = false)
     private String nombre;
     @Column (nullable = false)
