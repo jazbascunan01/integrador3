@@ -1,5 +1,6 @@
 package com.example.integrador3.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,10 +11,10 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
 public class Estudiante {
     @Id
+    @JsonProperty("DNI")
     private Integer DNI;
 
     @Column(nullable = false)
@@ -32,11 +33,13 @@ public class Estudiante {
     private String ciudad;
 
     @Column (nullable = false)
+    @JsonProperty("LU")
     private int LU;
 
     @OneToMany (mappedBy = "estudiante", fetch = FetchType.LAZY)
     private List<EstudianteCarrera> carreras;
 
+    public Estudiante() {}
 
     public Estudiante(Integer DNI, String nombre, String apellido,  int edad, String genero, String ciudad, int LU ) {
         this.LU = LU;

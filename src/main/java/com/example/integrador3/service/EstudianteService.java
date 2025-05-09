@@ -1,11 +1,20 @@
 package com.example.integrador3.service;
 
+import com.example.integrador3.model.Estudiante;
 import com.example.integrador3.repository.EstudianteRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class EstudianteService {
-    private final EstudianteRepository estudianteRepository;
+    @Autowired
+    private EstudianteRepository estudianteRepository;
+
+    public Estudiante save(Estudiante estudiante) throws Exception {
+        try {
+            return estudianteRepository.save(estudiante);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al guardar el estudiante: " + e.getMessage());
+        }
+    }
 }
