@@ -23,7 +23,7 @@ public class CargaDeDatos {
     private final EstudianteRepository estudianteRepository;
     private final EstudianteCarreraRepository estudianteCarreraRepository;
 
-    private final String RUTA_CSV = "src/main/resources/csv/";
+    private final String RUTA_CSV = "src/main/java/com/example/integrador3/csv/";
 
     @Autowired
     public CargaDeDatos(CarreraRespository carreraRespository, EstudianteRepository estudianteRepository, EstudianteCarreraRepository estudianteCarreraRepository) {
