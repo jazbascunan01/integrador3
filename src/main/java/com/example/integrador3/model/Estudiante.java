@@ -1,11 +1,9 @@
 package com.example.integrador3.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,9 +11,10 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Estudiante {
     @Id
-    private Integer dni;
+    private Integer DNI;
 
     @Column(nullable = false)
     private String nombre;
@@ -32,14 +31,21 @@ public class Estudiante {
     @Column
     private String ciudad;
 
-    @Column(nullable = false)
-    private int num_lu;
+    @Column (nullable = false)
+    private int LU;
 
-    @ManyToMany
-    @JoinTable(
-            name = "estudiante_carrera",
-            joinColumns = @JoinColumn(name = "estudiante_dni"),
-            inverseJoinColumns = @JoinColumn(name = "carrera_id")
-    )
-    private List<Carrera> carreras;
+    @OneToMany (mappedBy = "estudiante", fetch = FetchType.LAZY)
+    private List<Estudiante_Carrera> carreras;
+
+
+    public Estudiante(Integer DNI, String nombre, String apellido,  int edad, String genero, String ciudad, int LU ) {
+        this.LU = LU;
+        this.ciudad = ciudad;
+        this.genero = genero;
+        this.edad = edad;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.DNI = DNI;
+        this.carreras = new ArrayList<>();
+    }
 }

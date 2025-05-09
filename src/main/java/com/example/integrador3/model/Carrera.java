@@ -16,7 +16,7 @@ import java.util.List;
 public class Carrera {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id_carrera;
 
     @Column(nullable = false)
     private String nombre;
@@ -24,6 +24,16 @@ public class Carrera {
     @Column
     private int duracion;
 
-    @ManyToMany(mappedBy = "carreras")
-    private List<Estudiante> estudiantes;
+    @OneToMany(mappedBy = "carrera", fetch = FetchType.LAZY)
+    private List<Estudiante_Carrera> estudiantes;
+
+    @Override
+    public String toString() {
+        return "Carrera{" +
+                "id_carrera=" + id_carrera +
+                ", nombre='" + nombre + '\'' +
+                ", duracion=" + duracion +
+                ", estudiantes=" + estudiantes +
+                '}';
+    }
 }
