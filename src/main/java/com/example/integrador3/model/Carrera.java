@@ -19,19 +19,19 @@ public class Carrera {
     private Integer id_carrera;
 
     @Column(nullable = false)
-    private String nombre;
+    private String carrera;
 
     @Column
     private int duracion;
 
     @OneToMany(mappedBy = "carrera", fetch = FetchType.LAZY)
-    private List<Estudiante_Carrera> estudiantes;
+    private List<EstudianteCarrera> estudiantes;
 
     @Override
     public String toString() {
         return "Carrera{" +
                 "id_carrera=" + id_carrera +
-                ", nombre='" + nombre + '\'' +
+                ", nombre='" + carrera + '\'' +
                 ", duracion=" + duracion +
                 ", estudiantes=" + estudiantes +
                 '}';
