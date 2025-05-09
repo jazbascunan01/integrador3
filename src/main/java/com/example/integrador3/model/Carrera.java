@@ -15,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class Carrera {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_carrera;
 
     @Column(nullable = false)

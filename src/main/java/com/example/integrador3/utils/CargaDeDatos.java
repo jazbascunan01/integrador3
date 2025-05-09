@@ -33,10 +33,13 @@ public class CargaDeDatos {
     }
 
     public void cargarDatosDesdeCSV() throws IOException {
-        File carreraCSV = ResourceUtils.getFile(RUTA_CSV + "carreras.csv");
-        File estudianteCSV = ResourceUtils.getFile(RUTA_CSV + "estudiantes.csv");
-        File estudianteCarreraCSV = ResourceUtils.getFile(RUTA_CSV + "estudianteCarrera.csv");
+        cargarCarreras();
+        cargarEstudiantes();
+        cargarEstudianteCarrera();
+    }
 
+    public void cargarCarreras() throws IOException  {
+        File carreraCSV = ResourceUtils.getFile(RUTA_CSV + "carreras.csv");
         try (FileReader reader = new FileReader(carreraCSV);
              CSVParser csvParser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader)) {
             for (CSVRecord csvRecord : csvParser) {
@@ -47,7 +50,10 @@ public class CargaDeDatos {
                 carreraRespository.save(carrera);
             }
         }
+    }
 
+    public void cargarEstudiantes() throws IOException  {
+        File estudianteCSV = ResourceUtils.getFile(RUTA_CSV + "estudiantes.csv");
         try (FileReader reader = new FileReader(estudianteCSV);
              CSVParser csvParser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader)) {
             for (CSVRecord csvRecord : csvParser) {
@@ -62,11 +68,16 @@ public class CargaDeDatos {
                 estudianteRepository.save(estudiante);
             }
         }
+    }
+
+    public void cargarEstudianteCarrera() throws IOException  {
+
+        File estudianteCarreraCSV = ResourceUtils.getFile(RUTA_CSV + "estudianteCarrera.csv");
 
         try (FileReader reader = new FileReader(estudianteCarreraCSV);
              CSVParser csvParser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader)) {
             for (CSVRecord csvRecord : csvParser) {
-                Estudiante estudiante = estudianteRepository.findById(Integer.parseInt(csvRecord.get("DNI"))).orElse(null);
+                Estudiante estudiante = estudianteRepository.findById(Integer.parseInt(csvRecord.get("id_estudiante"))).orElse(null);
                 Carrera carrera = carreraRespository.findById(Integer.parseInt(csvRecord.get("id_carrera"))).orElse(null);
                 if (estudiante != null && carrera != null) {
                     EstudianteCarrera estudianteCarrera = new EstudianteCarrera();
