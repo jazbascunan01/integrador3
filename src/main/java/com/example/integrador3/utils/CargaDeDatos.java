@@ -44,7 +44,6 @@ public class CargaDeDatos {
              CSVParser csvParser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader)) {
             for (CSVRecord csvRecord : csvParser) {
                 Carrera carrera = new Carrera();
-                carrera.setId_carrera(Integer.parseInt(csvRecord.get("id_carrera")));
                 carrera.setCarrera(csvRecord.get("carrera"));
                 carrera.setDuracion(Integer.parseInt(csvRecord.get("duracion")));
                 carreraRespository.save(carrera);
@@ -81,7 +80,6 @@ public class CargaDeDatos {
                 Carrera carrera = carreraRespository.findById(Integer.parseInt(csvRecord.get("id_carrera"))).orElse(null);
                 if (estudiante != null && carrera != null) {
                     EstudianteCarrera estudianteCarrera = new EstudianteCarrera();
-                    estudianteCarrera.setId(Integer.parseInt(csvRecord.get("id")));
                     estudianteCarrera.setEstudiante(estudiante);
                     estudianteCarrera.setCarrera(carrera);
                     estudianteCarrera.setInscripcion(Integer.parseInt(csvRecord.get("inscripcion")));

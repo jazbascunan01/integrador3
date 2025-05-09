@@ -14,6 +14,7 @@ import lombok.Setter;
 @Entity
 public class EstudianteCarrera {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
