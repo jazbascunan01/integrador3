@@ -15,7 +15,7 @@ import lombok.Setter;
 public class Estudiante_Carrera {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn (name = "id_estudiante")
