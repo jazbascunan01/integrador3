@@ -17,4 +17,8 @@ public class EstudianteService {
             throw new RuntimeException("Error al guardar el estudiante: " + e.getMessage());
         }
     }
+
+    public Estudiante findById(Integer id) {
+        return estudianteRepository.findById(id).orElse(null);
+    }
 }

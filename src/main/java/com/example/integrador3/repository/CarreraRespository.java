@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarreraRespository extends JpaRepository<Carrera, Integer> {
+
+    Carrera findByCarrera(String carrera);
+
 }
