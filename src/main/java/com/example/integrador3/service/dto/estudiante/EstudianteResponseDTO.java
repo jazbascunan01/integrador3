@@ -14,5 +14,5 @@ public class EstudianteResponseDTO {
     private int edad;
     private String genero;
     private String ciudad;
-    private int LU;
+    private Integer LU;
 }

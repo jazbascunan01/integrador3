@@ -26,7 +26,6 @@ public class EstudianteService {
         return estudianteRepository.findById(id).orElse(null);
     }
 
-    // TODO Usar DTO sin carreras
     public List<EstudianteResponseDTO> findAll() {
         List<Estudiante> estudiantes = estudianteRepository.findAll();
         List<EstudianteResponseDTO> estudiantesResponse = new ArrayList<>();
@@ -44,9 +43,9 @@ public class EstudianteService {
         return estudiantesResponse;
     }
 
-    public List<EstudianteResponseDTO> findAllByDni() {
+    public List<EstudianteResponseDTO> findAllByLU() {
         List<EstudianteResponseDTO> estudiantes = this.findAll();
-        estudiantes.sort((e1, e2) -> e1.getDNI().compareTo(e2.getDNI()));
+        estudiantes.sort((e1, e2) -> e1.getLU().compareTo(e2.getLU()));
         return estudiantes;
     }
 

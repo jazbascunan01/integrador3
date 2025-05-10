@@ -1,7 +1,6 @@
 package com.example.integrador3.controller;
 
 import com.example.integrador3.model.Estudiante;
-import com.example.integrador3.model.EstudianteCarrera;
 import com.example.integrador3.service.CarreraService;
 import com.example.integrador3.service.EstudianteCarreraService;
 import com.example.integrador3.service.EstudianteService;
@@ -62,10 +61,10 @@ public class EstudianteController {
         }
     }
 
-    @GetMapping("/dni")
-    public ResponseEntity<?> findAllByDni() {
+    @GetMapping("/lu")
+    public ResponseEntity<?> findAllByLU() {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(estudianteService.findAllByDni());
+            return ResponseEntity.status(HttpStatus.OK).body(estudianteService.findAllByLU());
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error. No se pudo obtener la lista de estudiantes.\"}");
         }
