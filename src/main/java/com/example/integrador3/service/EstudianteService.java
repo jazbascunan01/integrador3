@@ -53,4 +53,21 @@ public class EstudianteService {
         return estudiantes;
     }
 
+    public List<EstudianteResponseDTO> findAllByGenero(String genero) {
+        List<Estudiante> estudiantes = estudianteRepository.findAllByGenero(genero);
+        List<EstudianteResponseDTO> estudiantesResponse = new ArrayList<>();
+        for (Estudiante estudiante : estudiantes) {
+            EstudianteResponseDTO estudianteResponse = new EstudianteResponseDTO();
+            estudianteResponse.setDNI(estudiante.getDNI());
+            estudianteResponse.setNombre(estudiante.getNombre());
+            estudianteResponse.setApellido(estudiante.getApellido());
+            estudianteResponse.setEdad(estudiante.getEdad());
+            estudianteResponse.setGenero(estudiante.getGenero());
+            estudianteResponse.setCiudad(estudiante.getCiudad());
+            estudianteResponse.setLU(estudiante.getLU());
+            estudiantesResponse.add(estudianteResponse);
+        }
+        return estudiantesResponse;
+    }
+
 }

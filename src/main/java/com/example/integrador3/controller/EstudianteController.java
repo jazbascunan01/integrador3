@@ -75,23 +75,27 @@ public class EstudianteController {
     public ResponseEntity<?> findByLU(@PathVariable Integer LU) {
         try {
             Estudiante estudiante = estudianteService.findByLU(LU);
-            EstudianteResponseDTO estudianteResponse = getEstudianteResponseDTO(estudiante);
+            EstudianteResponseDTO estudianteResponse = new EstudianteResponseDTO();
+            estudianteResponse.setDNI(estudiante.getDNI());
+            estudianteResponse.setNombre(estudiante.getNombre());
+            estudianteResponse.setApellido(estudiante.getApellido());
+            estudianteResponse.setEdad(estudiante.getEdad());
+            estudianteResponse.setGenero(estudiante.getGenero());
+            estudianteResponse.setCiudad(estudiante.getCiudad());
+            estudianteResponse.setLU(estudiante.getLU());
             return ResponseEntity.status(HttpStatus.OK).body(estudianteResponse);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error. No se pudo obtener el estudiante.\"}");
         }
     }
 
-    private static EstudianteResponseDTO getEstudianteResponseDTO(Estudiante estudiante) {
-        EstudianteResponseDTO estudianteResponse = new EstudianteResponseDTO();
-        estudianteResponse.setDNI(estudiante.getDNI());
-        estudianteResponse.setNombre(estudiante.getNombre());
-        estudianteResponse.setApellido(estudiante.getApellido());
-        estudianteResponse.setEdad(estudiante.getEdad());
-        estudianteResponse.setGenero(estudiante.getGenero());
-        estudianteResponse.setCiudad(estudiante.getCiudad());
-        estudianteResponse.setLU(estudiante.getLU());
-        return estudianteResponse;
+    @GetMapping("/genero/{genero}")
+    public ResponseEntity<?> findAllByGenero(@PathVariable String genero) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(estudianteService.findAllByGenero(genero));
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error. No se pudo obtener la lista de estudiantes.\"}");
+        }
     }
 
 }
