@@ -9,10 +9,7 @@ import com.example.integrador3.service.dto.estudiante.EstudianteCarreraRequestDT
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/estudiantes")
@@ -45,5 +42,33 @@ public class EstudianteController {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findById(@PathVariable Integer id) {
+        try {
+            Estudiante estudiante = estudianteService.findById(id);
+            return ResponseEntity.status(HttpStatus.OK).body(estudiante);
+        } catch (Exception e) {
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error. No se pudo obtener el estudiante.\"}");
+        }
+        return null;
+    }
+
+    @GetMapping("")
+    public ResponseEntity<?> findAll() {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(estudianteService.findAll());
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error. No se pudo obtener la lista de estudiantes.\"}");
+        }
+    }
+
+    @GetMapping("/dni")
+    public ResponseEntity<?> findAllByDni() {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(estudianteService.findAllByDni());
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error. No se pudo obtener la lista de estudiantes.\"}");
+        }
+    }
 
 }
