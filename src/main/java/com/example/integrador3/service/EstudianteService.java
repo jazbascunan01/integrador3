@@ -26,6 +26,10 @@ public class EstudianteService {
         return estudianteRepository.findById(id).orElse(null);
     }
 
+    public Estudiante findByLU(Integer LU) {
+        return estudianteRepository.findByLU(LU);
+    }
+
     public List<EstudianteResponseDTO> findAll() {
         List<Estudiante> estudiantes = estudianteRepository.findAll();
         List<EstudianteResponseDTO> estudiantesResponse = new ArrayList<>();
