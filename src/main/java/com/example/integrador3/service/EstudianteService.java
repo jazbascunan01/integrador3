@@ -26,22 +26,16 @@ public class EstudianteService {
         return estudianteRepository.findById(id).orElse(null);
     }
 
-    public Estudiante findByLU(Integer LU) {
-        return estudianteRepository.findByLU(LU);
+    public EstudianteResponseDTO findByLU(Integer LU) {
+        Estudiante estudiante = estudianteRepository.findByLU(LU);
+        return mapToDTO(estudiante);
     }
 
     public List<EstudianteResponseDTO> findAll() {
         List<Estudiante> estudiantes = estudianteRepository.findAll();
         List<EstudianteResponseDTO> estudiantesResponse = new ArrayList<>();
         for (Estudiante estudiante : estudiantes) {
-            EstudianteResponseDTO estudianteResponse = new EstudianteResponseDTO();
-            estudianteResponse.setDNI(estudiante.getDNI());
-            estudianteResponse.setNombre(estudiante.getNombre());
-            estudianteResponse.setApellido(estudiante.getApellido());
-            estudianteResponse.setEdad(estudiante.getEdad());
-            estudianteResponse.setGenero(estudiante.getGenero());
-            estudianteResponse.setCiudad(estudiante.getCiudad());
-            estudianteResponse.setLU(estudiante.getLU());
+            EstudianteResponseDTO estudianteResponse = mapToDTO(estudiante);
             estudiantesResponse.add(estudianteResponse);
         }
         return estudiantesResponse;
@@ -57,17 +51,22 @@ public class EstudianteService {
         List<Estudiante> estudiantes = estudianteRepository.findAllByGenero(genero);
         List<EstudianteResponseDTO> estudiantesResponse = new ArrayList<>();
         for (Estudiante estudiante : estudiantes) {
-            EstudianteResponseDTO estudianteResponse = new EstudianteResponseDTO();
-            estudianteResponse.setDNI(estudiante.getDNI());
-            estudianteResponse.setNombre(estudiante.getNombre());
-            estudianteResponse.setApellido(estudiante.getApellido());
-            estudianteResponse.setEdad(estudiante.getEdad());
-            estudianteResponse.setGenero(estudiante.getGenero());
-            estudianteResponse.setCiudad(estudiante.getCiudad());
-            estudianteResponse.setLU(estudiante.getLU());
+            EstudianteResponseDTO estudianteResponse = mapToDTO(estudiante);
             estudiantesResponse.add(estudianteResponse);
         }
         return estudiantesResponse;
+    }
+
+    public EstudianteResponseDTO mapToDTO(Estudiante estudiante) {
+        EstudianteResponseDTO estudianteResponse = new EstudianteResponseDTO();
+        estudianteResponse.setDNI(estudiante.getDNI());
+        estudianteResponse.setNombre(estudiante.getNombre());
+        estudianteResponse.setApellido(estudiante.getApellido());
+        estudianteResponse.setEdad(estudiante.getEdad());
+        estudianteResponse.setGenero(estudiante.getGenero());
+        estudianteResponse.setCiudad(estudiante.getCiudad());
+        estudianteResponse.setLU(estudiante.getLU());
+        return estudianteResponse;
     }
 
 }
