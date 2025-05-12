@@ -27,4 +27,13 @@ public class CarreraController {
             return ResponseEntity.badRequest().body("{\"error\":\"Error. No se pudo obtener la lista de carreras.\"}");
         }
     }
+
+    @GetMapping("/reporte")
+    public ResponseEntity<?> getCarreraReport() {
+        try {
+            return ResponseEntity.ok(carreraService.getCarreraReport());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("{\"error\":\"Error al generar el reporte de carreras.\"}");
+        }
+    }
 }
