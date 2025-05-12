@@ -3,7 +3,7 @@ package com.example.integrador3.utils;
 import com.example.integrador3.model.Carrera;
 import com.example.integrador3.model.Estudiante;
 import com.example.integrador3.model.EstudianteCarrera;
-import com.example.integrador3.repository.CarreraRespository;
+import com.example.integrador3.repository.CarreraRepository;
 import com.example.integrador3.repository.EstudianteCarreraRepository;
 import com.example.integrador3.repository.EstudianteRepository;
 import org.apache.commons.csv.CSVFormat;
@@ -19,15 +19,15 @@ import java.io.IOException;
 
 @Component
 public class CargaDeDatos {
-    private final CarreraRespository carreraRespository;
+    private final CarreraRepository carreraRepository;
     private final EstudianteRepository estudianteRepository;
     private final EstudianteCarreraRepository estudianteCarreraRepository;
 
     private final String RUTA_CSV = "src/main/java/com/example/integrador3/csv/";
 
     @Autowired
-    public CargaDeDatos(CarreraRespository carreraRespository, EstudianteRepository estudianteRepository, EstudianteCarreraRepository estudianteCarreraRepository) {
-        this.carreraRespository = carreraRespository;
+    public CargaDeDatos(CarreraRepository carreraRepository, EstudianteRepository estudianteRepository, EstudianteCarreraRepository estudianteCarreraRepository) {
+        this.carreraRepository = carreraRepository;
         this.estudianteRepository = estudianteRepository;
         this.estudianteCarreraRepository = estudianteCarreraRepository;
     }
@@ -46,7 +46,7 @@ public class CargaDeDatos {
                 Carrera carrera = new Carrera();
                 carrera.setCarrera(csvRecord.get("carrera"));
                 carrera.setDuracion(Integer.parseInt(csvRecord.get("duracion")));
-                carreraRespository.save(carrera);
+                carreraRepository.save(carrera);
             }
         }
     }
@@ -77,7 +77,7 @@ public class CargaDeDatos {
              CSVParser csvParser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader)) {
             for (CSVRecord csvRecord : csvParser) {
                 Estudiante estudiante = estudianteRepository.findById(Integer.parseInt(csvRecord.get("id_estudiante"))).orElse(null);
-                Carrera carrera = carreraRespository.findById(Integer.parseInt(csvRecord.get("id_carrera"))).orElse(null);
+                Carrera carrera = carreraRepository.findById(Integer.parseInt(csvRecord.get("id_carrera"))).orElse(null);
                 if (estudiante != null && carrera != null) {
                     EstudianteCarrera estudianteCarrera = new EstudianteCarrera();
                     estudianteCarrera.setEstudiante(estudiante);

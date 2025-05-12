@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CarreraRespository extends JpaRepository<Carrera, Integer> {
+public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
 
     Carrera findByCarrera(String carrera);
 
