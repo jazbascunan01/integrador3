@@ -105,10 +105,12 @@ Este proyecto fue desarrollado por el **Grupo N° 7**
 
 ## 📂 Ejemplo de Interacción
 
-1. **Probar los Endpoints**:
-    * Importa el archivo de colección en Postman (`integrador3.postman_collection.json`).
-    * Ejecuta las solicitudes preconfiguradas para verificar el funcionamiento del proyecto.
-
+1. **Prueba con Postman**:
+    - Importa el archivo `integrador3.postman_collection.json` en Postman
+    - La colección incluye:
+        - Todos los endpoints configurados y listos para usar
+        - Ejemplos de requests predefinidos con los parámetros necesarios
+        - Organización por categorías (Estudiantes, Carreras, Matriculaciones)
 2. **Reporte de Carreras**:
     * Generar un listado de carreras con inscriptos y egresados por año, ordenado alfabética y cronológicamente.
 
