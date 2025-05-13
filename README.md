@@ -20,6 +20,7 @@ Este proyecto fue desarrollado por el **Grupo N° 7**
 1. **Java**: JDK 21 o superior.
 2. **Maven**: Para gestionar las dependencias del proyecto.
 3. **Base de Datos**: Una instancia de MySQL en ejecución.
+4. **Postman**: Para probar los endpoints con la colección incluida.
 
 ---
 
@@ -40,21 +41,23 @@ Este proyecto fue desarrollado por el **Grupo N° 7**
 - `estudiantes.csv`, `carreras.csv`, `estudianteCarrera.csv`:
     - Datos iniciales para rellenar las tablas de la base de datos.
 
+### 3. **📂 Archivo de Colección para Postman**
+
+* **`collections`**:
+    * Archivo JSON con la colección de pruebas para Postman (`integrador3.postman_collection.json`).
+    * Contiene ejemplos de solicitudes para todos los endpoints del proyecto.
+
 ---
 
 ## ⚙️ Ejecución del Proyecto
 
 ### Configuración Inicial
 1. Asegúrate de que tu servidor MySQL esté corriendo en `localhost`.
-2. Crea una base de datos llamada `integrador3`:
-    ```sql
-    CREATE DATABASE integrador3;
-    ```
-3. Actualiza las credenciales de conexión en el archivo `application.properties`:
+2. Actualiza las credenciales de conexión en el archivo `application.properties`:
     - Usuario: `root`
     - Contraseña: *(cadena vacía)*
 
-4. Ejecuta el proyecto con Maven:
+3. Ejecuta el proyecto con Maven:
     ```bash
     mvn spring-boot:run
     ```
@@ -76,26 +79,46 @@ Este proyecto fue desarrollado por el **Grupo N° 7**
 
 ---
 
+## 📂 Endpoints Principales
+
+### **Estudiantes**
+
+1. **Buscar estudiante por LU**:
+    * **URL**: `GET /estudiantes/lu/{lu}`
+    * **Ejemplo**: `http://localhost:8080/estudiantes/lu/13413`
+
+2. **Consultar estudiantes por género**:
+    * **URL**: `GET /estudiantes/genero/{genero}`
+    * **Ejemplo**: `http://localhost:8080/estudiantes/genero/Male`
+
+### **Carreras**
+
+3. **Carreras con estudiantes ordenadas**:
+    * **URL**: `GET /carreras/conEstudiantes`
+    * **Ejemplo**: `http://localhost:8080/carreras/conEstudiantes`
+
+4. **Reporte de carreras**:
+    * **URL**: `GET /carreras/reporte`
+    * **Ejemplo**: `http://localhost:8080/carreras/reporte`
+
+---
+
 ## 📂 Ejemplo de Interacción
-1. **Endpoints Principales**:
-    - **Buscar estudiante por LU**:
-        - URL: `GET /estudiantes/lu/{lu}`
-        - Ejemplo: `http://localhost:8080/estudiantes/lu/13413`
-    - **Consultar estudiantes por género**:
-        - URL: `GET /estudiantes/genero/{genero}`
-        - Ejemplo: `http://localhost:8080/estudiantes/genero/Male`
-    - **Carreras con estudiantes ordenadas**:
-        - URL: `GET /carreras/conEstudiantes`
-        - Ejemplo: `http://localhost:8080/carreras/conEstudiantes`
+
+1. **Probar los Endpoints**:
+    * Importa el archivo de colección en Postman (`integrador3.postman_collection.json`).
+    * Ejecuta las solicitudes preconfiguradas para verificar el funcionamiento del proyecto.
 
 2. **Reporte de Carreras**:
-    - Generar un listado de carreras con inscriptos y egresados por año, ordenado alfabética y cronológicamente.
+    * Generar un listado de carreras con inscriptos y egresados por año, ordenado alfabética y cronológicamente.
 
 ---
 
 ## 🛠️ Tecnologías Utilizadas
-- **Spring Boot**: Framework para el desarrollo de aplicaciones web.
-- **JPA**: Para la persistencia de datos.
-- **MySQL**: Base de datos relacional.
-- **Maven**: Gestión de dependencias.
-- **Commons CSV**: Procesamiento de archivos CSV.
+
+* **Spring Boot**: Framework para el desarrollo de aplicaciones web.
+* **JPA**: Para la persistencia de datos.
+* **MySQL**: Base de datos relacional.
+* **Maven**: Gestión de dependencias.
+* **Commons CSV**: Procesamiento de archivos CSV.
+* **Postman**: Pruebas de los endpoints REST.
