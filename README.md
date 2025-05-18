@@ -90,28 +90,113 @@ El proyecto sigue una estructura estándar de Maven:
 
 ---
 
-## 📂 Endpoints Principales
+# 🚀 API Endpoints
 
-### **Estudiantes**
+## **Estudiantes**
 
-1. **Buscar estudiante por LU**:
-    * **URL**: `GET /estudiantes/lu/{lu}`
-    * **Ejemplo**: `http://localhost:8080/estudiantes/lu/13413`
+| Método | Endpoint | Descripción | Parámetros |
+|--------|----------|-------------|------------|
+| `POST` | `/estudiantes` | Registrar un nuevo estudiante | `Estudiante` (JSON en body) |
+| `POST` | `/estudiantes/matricular` | Matricular estudiante en carrera | `EstudianteCarreraRequestDTO` (JSON en body) |
+| `GET` | `/estudiantes` | Obtener todos los estudiantes | Opcionales: `sortBy` (campo), `sortDir` (ASC/DESC) |
+| `GET` | `/estudiantes/lu` | Obtener estudiantes ordenados por LU | - |
+| `GET` | `/estudiantes/lu/{LU}` | Buscar estudiante por número de LU | Path: `LU` (entero) |
+| `GET` | `/estudiantes/genero/{genero}` | Filtrar estudiantes por género | Path: `genero` (String) |
+| `GET` | `/estudiantes/carrera/{nombreCarrera}/ciudad/{ciudadResidencia}` | Estudiantes por carrera y ciudad | Path: `nombreCarrera`, `ciudadResidencia` (Strings) |
+| `GET` | `/estudiantes/{id}` | Buscar estudiante por ID | Path: `id` (entero) |
 
-2. **Consultar estudiantes por género**:
-    * **URL**: `GET /estudiantes/genero/{genero}`
-    * **Ejemplo**: `http://localhost:8080/estudiantes/genero/Male`
+## **Carreras**
 
-### **Carreras**
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| `GET` | `/carreras/conEstudiantes` | Carreras con cantidad de estudiantes (ordenadas) |
+| `GET` | `/carreras/reporte` | Reporte de carreras con inscriptos/egresados por año |
 
-3. **Carreras con estudiantes ordenadas**:
-    * **URL**: `GET /carreras/conEstudiantes`
-    * **Ejemplo**: `http://localhost:8080/carreras/conEstudiantes`
+---
 
-4. **Reporte de carreras**:
-    * **URL**: `GET /carreras/reporte`
-    * **Ejemplo**: `http://localhost:8080/carreras/reporte`
+## 📌 Ejemplos de Uso
 
+### **1. Registrar Estudiante**
+```http
+POST /estudiantes
+Content-Type: application/json
+
+{
+    "dni": 40123456,
+    "LU": 12345,
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "edad": 22,
+    "genero": "Male",
+    "ciudad": "Buenos Aires"
+}
+```
+
+### 2. Matricular Estudiante en Carrera
+```http
+POST /estudiantes/matricular
+Content-Type: application/json
+
+{
+    "idEstudiante": 1,
+    "idCarrera": 3,
+    "fechaInscripcion": "2020-05-15",
+    "fechaGraduacion": null
+}
+```
+### 3. Obtener Estudiantes
+```http
+GET /estudiantes?sortBy=apellido&sortDir=DESC
+```
+
+### 4. Buscar Estudiante por LU
+```http
+GET /estudiantes/lu/13413
+```
+
+### 5. Carreras con estudiantes
+```http
+GET /carreras/conEstudiantes
+```
+
+### 6. Reporte de Carreras
+```http
+GET /carreras/reporte
+```
+---
+## 🔄 Consultas con Ordenamiento Dinámico
+
+### **Estudiantes con Ordenamiento Personalizado**
+
+El endpoint `/estudiantes` soporta parámetros para ordenamiento dinámico:
+
+| Parámetro | Tipo | Requerido | Valores | Descripción |
+|-----------|------|-----------|---------|-------------|
+| `sortBy` | String | No | LU, nombre, apellido, edad, genero, ciudad | Campo por el cual ordenar los resultados |
+| `sortDir` | String | No | ASC, DESC | Dirección del ordenamiento (ascendente/descendente) |
+
+**Comportamiento:**
+- Si no se especifica `sortBy`: Se devuelve el orden natural de la base de datos
+- Si solo se especifica `sortBy`: Orden ascendente por defecto
+- Si se especifican ambos: Ordenamiento personalizado completo
+
+**Ejemplos:**
+
+1. Ordenar por apellido descendente:
+```http
+GET /estudiantes?sortBy=apellido&sortDir=DESC
+```
+---
+## 🔍 Consultas Avanzadas
+
+### 1. Estudiantes por género
+```http
+GET /estudiantes/genero/Female
+```
+### 2. Estudiantes por carrera y ciudad
+```http
+GET /estudiantes/carrera/TUDAI/ciudad/Rauch
+```
 ---
 
 ## 📂 Ejemplo de Interacción
@@ -125,6 +210,23 @@ El proyecto sigue una estructura estándar de Maven:
 2. **Reporte de Carreras**:
     * Generar un listado de carreras con inscriptos y egresados por año, ordenado alfabética y cronológicamente.
 
+---
+
+## 🛠️ Manejo de Errores
+
+La API devuelve respuestas estructuradas con códigos HTTP apropiados:
+
+- `200 OK` para operaciones exitosas
+- `400 Bad Request` para parámetros inválidos
+- `404 Not Found` cuando no se encuentra un recurso
+- `409 Conflict` para duplicados o reglas de negocio violadas
+
+**Ejemplo de error:**
+```json
+{
+    "error": "El estudiante ya está matriculado en esta carrera"
+}
+```
 ---
 
 ## 🛠️ Tecnologías Utilizadas
