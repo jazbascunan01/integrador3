@@ -13,5 +13,6 @@ public class EstudianteCarreraRequestDTO {
     private Integer idEstudiante;
     private String nombreCarrera;
     private int inscripcion;
+    private int graduacion;
     private int antiguedad;
 }

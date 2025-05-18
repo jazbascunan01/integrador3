@@ -53,15 +53,11 @@ public class EstudianteController {
         try {
             estudianteCarreraService.save(estudianteCarrera);
             return ResponseEntity.status(HttpStatus.OK).body("{\"success\":\"Estudiante matriculado correctamente.\"}");
-        } catch (IllegalStateException ise) { // Captura específica para "ya matriculado"
-            // Devuelve un 409 Conflict, que es semánticamente más correcto para este caso
+        } catch (IllegalStateException ise) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("{\"error\":\"" + ise.getMessage() + "\"}");
-        } catch (RuntimeException re) { // Captura para otras RuntimeExceptions (ej. estudiante/carrera no encontrados, error de guardado)
-            // Estas RuntimeException vienen del servicio con mensajes específicos.
+        } catch (RuntimeException re) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"" + re.getMessage() + "\"}");
-        } catch (Exception e){ // Catch genérico final para errores inesperados
-            // Para depuración, puedes imprimir la traza del error en la consola del servidor:
-            // e.printStackTrace();
+        } catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"error\":\"Error interno del servidor. No se pudo matricular el estudiante.\"}");
         }
     }
