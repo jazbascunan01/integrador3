@@ -27,9 +27,8 @@ public class EstudianteService {
      *
      * @param estudiante Objeto del estudiante a guardar.
      * @return El estudiante guardado.
-     * @throws Exception Si ocurre un error al guardar.
      */
-    public Estudiante save(Estudiante estudiante) throws Exception {
+    public Estudiante save(Estudiante estudiante) {
         try {
             return estudianteRepository.save(estudiante);
         } catch (Exception e) {
@@ -63,19 +62,13 @@ public class EstudianteService {
      *
      * @return Lista de DTOs de estudiantes.
      */
+
     public List<EstudianteResponseDTO> findAll() {
         List<Estudiante> estudiantes = estudianteRepository.findAll();
-        List<EstudianteResponseDTO> estudiantesResponse = new ArrayList<>();
-        for (Estudiante estudiante : estudiantes) {
-            EstudianteResponseDTO estudianteResponse = mapToDTO(estudiante);
-            estudiantesResponse.add(estudianteResponse);
-        }
-        return estudiantesResponse;
+        return estudiantes.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
     /**
      * Obtiene la lista de todos los estudiantes, aplicando el ordenamiento especificado.
-     * Este método asume que sortBy es provisto y válido.
-     *
      * @param sortBy Campo por el cual ordenar (ej: "LU", "apellido"). No debe ser null ni vacío.
      * @param sortDirection Dirección del ordenamiento ("ASC" o "DESC").
      * @return Lista de DTOs de estudiantes ordenados.
@@ -145,6 +138,9 @@ public class EstudianteService {
      * @return DTO del estudiante.
      */
     public EstudianteResponseDTO mapToDTO(Estudiante estudiante) {
+        if (estudiante == null) {
+            return null;
+        }
         EstudianteResponseDTO estudianteResponse = new EstudianteResponseDTO();
         estudianteResponse.setDNI(estudiante.getDNI());
         estudianteResponse.setNombre(estudiante.getNombre());
