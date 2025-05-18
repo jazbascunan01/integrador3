@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "1af84bec-6af8-4176-9d5c-0ab5821a454d",
+		"_postman_id": "3ecd4cd8-d7a2-4ec8-bbc2-ebbf98d2848f",
 		"name": "Integrador 3",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "25992523"
+		"_exporter_id": "24234675"
 	},
 	"item": [
 		{
@@ -575,6 +575,64 @@
 					],
 					"cookie": [],
 					"body": "[\n    {\n        \"años\": {\n            \"2017\": {\n                \"inscriptos\": 2\n            },\n            \"2018\": {\n                \"inscriptos\": 1\n            },\n            \"2021\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"egresados\": 1\n            },\n            \"2023\": {\n                \"egresados\": 1\n            },\n            \"2024\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"Abogacia\"\n    },\n    {\n        \"años\": {\n            \"0\": {\n                \"egresados\": 1\n            },\n            \"2015\": {\n                \"inscriptos\": 1\n            },\n            \"2016\": {\n                \"inscriptos\": 1\n            },\n            \"2017\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"egresados\": 1\n            },\n            \"2023\": {\n                \"inscriptos\": 1\n            },\n            \"2024\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            },\n            \"2025\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"Arte\"\n    },\n    {\n        \"años\": {\n            \"0\": {\n                \"egresados\": 1\n            },\n            \"2019\": {\n                \"inscriptos\": 1\n            },\n            \"2020\": {\n                \"inscriptos\": 1\n            },\n            \"2021\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            },\n            \"2023\": {\n                \"egresados\": 1\n            },\n            \"2025\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"Ciencias Economicas\"\n    },\n    {\n        \"años\": {\n            \"0\": {\n                \"egresados\": 1\n            },\n            \"2014\": {\n                \"inscriptos\": 1\n            },\n            \"2015\": {\n                \"inscriptos\": 1\n            },\n            \"2016\": {\n                \"inscriptos\": 1\n            },\n            \"2017\": {\n                \"inscriptos\": 1\n            },\n            \"2018\": {\n                \"inscriptos\": 1\n            },\n            \"2019\": {\n                \"inscriptos\": 1\n            },\n            \"2020\": {\n                \"inscriptos\": 1\n            },\n            \"2021\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            },\n            \"2023\": {\n                \"egresados\": 1\n            },\n            \"2024\": {\n                \"egresados\": 1\n            },\n            \"2025\": {\n                \"egresados\": 1\n            },\n            \"2026\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"Educacion Fisica\"\n    },\n    {\n        \"años\": {\n            \"2016\": {\n                \"inscriptos\": 1\n            },\n            \"2017\": {\n                \"inscriptos\": 1\n            },\n            \"2019\": {\n                \"inscriptos\": 1\n            },\n            \"2020\": {\n                \"inscriptos\": 1\n            },\n            \"2021\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            },\n            \"2023\": {\n                \"egresados\": 1\n            },\n            \"2025\": {\n                \"egresados\": 1\n            },\n            \"2026\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"Ingenieria Electronica\"\n    },\n    {\n        \"años\": {\n            \"0\": {\n                \"egresados\": 1\n            },\n            \"2013\": {\n                \"inscriptos\": 1\n            },\n            \"2016\": {\n                \"inscriptos\": 1\n            },\n            \"2020\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"egresados\": 1\n            },\n            \"2025\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"Ingenieria Industrial\"\n    },\n    {\n        \"años\": {\n            \"0\": {\n                \"egresados\": 2\n            },\n            \"2016\": {\n                \"inscriptos\": 1\n            },\n            \"2020\": {\n                \"inscriptos\": 2\n            },\n            \"2021\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"egresados\": 1,\n                \"inscriptos\": 2\n            },\n            \"2023\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            },\n            \"2024\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            }\n        },\n        \"carrera\": \"Ingenieria de Sistemas\"\n    },\n    {\n        \"años\": {\n            \"0\": {\n                \"egresados\": 1\n            },\n            \"2017\": {\n                \"inscriptos\": 1\n            },\n            \"2018\": {\n                \"inscriptos\": 1\n            },\n            \"2020\": {\n                \"inscriptos\": 1\n            },\n            \"2021\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"inscriptos\": 1\n            },\n            \"2023\": {\n                \"egresados\": 1\n            },\n            \"2024\": {\n                \"egresados\": 1\n            },\n            \"2026\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"Licenciatura en Fisica\"\n    },\n    {\n        \"años\": {\n            \"2015\": {\n                \"inscriptos\": 1\n            },\n            \"2016\": {\n                \"inscriptos\": 1\n            },\n            \"2018\": {\n                \"inscriptos\": 1\n            },\n            \"2019\": {\n                \"inscriptos\": 1\n            },\n            \"2020\": {\n                \"inscriptos\": 2\n            },\n            \"2021\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            },\n            \"2023\": {\n                \"egresados\": 1\n            },\n            \"2024\": {\n                \"egresados\": 1\n            },\n            \"2025\": {\n                \"egresados\": 1\n            },\n            \"2026\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"Medicina\"\n    },\n    {\n        \"años\": {\n            \"2015\": {\n                \"inscriptos\": 1\n            },\n            \"2017\": {\n                \"inscriptos\": 1\n            },\n            \"2018\": {\n                \"inscriptos\": 1\n            },\n            \"2020\": {\n                \"inscriptos\": 1\n            },\n            \"2021\": {\n                \"inscriptos\": 1\n            },\n            \"2024\": {\n                \"egresados\": 1\n            },\n            \"2026\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"Periodismo\"\n    },\n    {\n        \"años\": {\n            \"0\": {\n                \"egresados\": 1\n            },\n            \"2016\": {\n                \"inscriptos\": 1\n            },\n            \"2020\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            },\n            \"2024\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            },\n            \"2025\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"Profesorado Matematicas\"\n    },\n    {\n        \"años\": {\n            \"0\": {\n                \"egresados\": 1\n            },\n            \"202\": {\n                \"inscriptos\": 1\n            },\n            \"2013\": {\n                \"inscriptos\": 1\n            },\n            \"2016\": {\n                \"inscriptos\": 2\n            },\n            \"2017\": {\n                \"inscriptos\": 1\n            },\n            \"2020\": {\n                \"inscriptos\": 1\n            },\n            \"2021\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"inscriptos\": 1\n            },\n            \"2023\": {\n                \"egresados\": 1\n            },\n            \"2024\": {\n                \"egresados\": 1\n            },\n            \"2025\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            }\n        },\n        \"carrera\": \"Psicologia\"\n    },\n    {\n        \"años\": {\n            \"0\": {\n                \"egresados\": 1\n            },\n            \"2017\": {\n                \"inscriptos\": 1\n            },\n            \"2020\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"inscriptos\": 1\n            },\n            \"2023\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"TUARI\"\n    },\n    {\n        \"años\": {\n            \"0\": {\n                \"egresados\": 1\n            },\n            \"2014\": {\n                \"inscriptos\": 1\n            },\n            \"2015\": {\n                \"inscriptos\": 1\n            },\n            \"2017\": {\n                \"inscriptos\": 1\n            },\n            \"2019\": {\n                \"inscriptos\": 5\n            },\n            \"2020\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            },\n            \"2021\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"egresados\": 5,\n                \"inscriptos\": 1\n            },\n            \"2023\": {\n                \"egresados\": 1\n            },\n            \"2024\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            },\n            \"2025\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"TUDAI\"\n    },\n    {\n        \"años\": {\n            \"0\": {\n                \"egresados\": 1\n            },\n            \"2016\": {\n                \"inscriptos\": 1\n            },\n            \"2017\": {\n                \"inscriptos\": 1\n            },\n            \"2020\": {\n                \"inscriptos\": 1\n            },\n            \"2022\": {\n                \"egresados\": 1,\n                \"inscriptos\": 1\n            },\n            \"2023\": {\n                \"inscriptos\": 1\n            },\n            \"2025\": {\n                \"egresados\": 1\n            },\n            \"2026\": {\n                \"egresados\": 1\n            }\n        },\n        \"carrera\": \"Veterinaria\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "ver estudiantes por carrera y ciudad",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "response ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estudiantes/carrera/TUDAI/ciudad/Rauch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudiantes",
+								"carrera",
+								"TUDAI",
+								"ciudad",
+								"Rauch"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 May 2025 16:40:05 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"nombre\": \"Hector\",\n        \"apellido\": \"Liceaga\",\n        \"edad\": 32,\n        \"genero\": \"Masculino\",\n        \"ciudad\": \"Rauch\",\n        \"lu\": 250021,\n        \"dni\": 30111285\n    },\n    {\n        \"nombre\": \"Sergio\",\n        \"apellido\": \"Ya\\ufffdez\",\n        \"edad\": 48,\n        \"genero\": \"Masculino\",\n        \"ciudad\": \"Rauch\",\n        \"lu\": 250018,\n        \"dni\": 23322529\n    },\n    {\n        \"nombre\": \"Nicolas\",\n        \"apellido\": \"Carsaniga\",\n        \"edad\": 30,\n        \"genero\": \"Masculino\",\n        \"ciudad\": \"Rauch\",\n        \"lu\": 250019,\n        \"dni\": 32362231\n    },\n    {\n        \"nombre\": \"Elva\",\n        \"apellido\": \"Kehler\",\n        \"edad\": 45,\n        \"genero\": \"Femenino\",\n        \"ciudad\": \"Rauch\",\n        \"lu\": 250020,\n        \"dni\": 24914542\n    }\n]"
 				}
 			]
 		}
