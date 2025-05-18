@@ -81,15 +81,29 @@ public class EstudianteController {
 
     /**
      * Obtiene la lista de todos los estudiantes.
+     * Si se proveen parámetros de ordenamiento (`sortBy`), se aplica dicho ordenamiento.
+     * Si no se provee `sortBy`, se devuelve la lista sin un ordenamiento explícito (orden por defecto de la BD).
      *
+     * @param sortBy Campo por el cual ordenar (opcional, ej: "LU", "apellido").
+     * @param sortDir Dirección del ordenamiento (opcional, "ASC" o "DESC", por defecto "ASC" si sortBy está presente).
      * @return Respuesta HTTP con la lista de estudiantes o un mensaje de error.
      */
     @GetMapping("")
-    public ResponseEntity<?> findAll() {
+    public ResponseEntity<?> findAll(
+            @RequestParam(required = false) String sortBy,
+            @RequestParam(required = false, defaultValue = "ASC") String sortDir) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(estudianteService.findAll());
+            List<EstudianteResponseDTO> estudiantes;
+            if (sortBy != null && !sortBy.isEmpty()) {
+                estudiantes = estudianteService.findAllWithParams(sortBy, sortDir);
+            } else {
+                estudiantes = estudianteService.findAll();
+            }
+            return ResponseEntity.status(HttpStatus.OK).body(estudiantes);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"" + e.getMessage() + "\"}");
         } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error. No se pudo obtener la lista de estudiantes.\"}");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"error\":\"Error interno al obtener la lista de estudiantes.\"}");
         }
     }
 

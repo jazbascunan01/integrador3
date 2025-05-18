@@ -5,8 +5,10 @@ import com.example.integrador3.repository.EstudianteRepository;
 import com.example.integrador3.service.dto.estudiante.EstudianteResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +19,8 @@ import java.util.stream.Collectors;
 public class EstudianteService {
     @Autowired
     private EstudianteRepository estudianteRepository;
+    // Lista de campos válidos para ordenar (para seguridad y evitar errores)
+    private static final List<String> VALID_SORT_FIELDS = Arrays.asList("DNI", "nombre", "apellido", "edad", "genero", "ciudad", "LU");
 
     /**
      * Guarda un nuevo estudiante en la base de datos.
@@ -68,7 +72,27 @@ public class EstudianteService {
         }
         return estudiantesResponse;
     }
+    /**
+     * Obtiene la lista de todos los estudiantes, aplicando el ordenamiento especificado.
+     * Este método asume que sortBy es provisto y válido.
+     *
+     * @param sortBy Campo por el cual ordenar (ej: "LU", "apellido"). No debe ser null ni vacío.
+     * @param sortDirection Dirección del ordenamiento ("ASC" o "DESC").
+     * @return Lista de DTOs de estudiantes ordenados.
+     */
+    public List<EstudianteResponseDTO> findAllWithParams(String sortBy, String sortDirection) {
+        if (!VALID_SORT_FIELDS.contains(sortBy)) {
+            throw new IllegalArgumentException("Campo de ordenamiento no válido: " + sortBy + ". Campos válidos: " + VALID_SORT_FIELDS);
+        }
 
+        Sort.Direction direction = sortDirection.equalsIgnoreCase("DESC") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort sort = Sort.by(direction, sortBy);
+
+        List<Estudiante> estudiantes = estudianteRepository.findAll(sort);
+        return estudiantes.stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
     /**
      * Obtiene la lista de estudiantes ordenados por LU.
      *
