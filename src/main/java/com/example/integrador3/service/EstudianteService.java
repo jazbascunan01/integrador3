@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * Servicio para gestionar las operaciones relacionadas con los estudiantes.
  */
@@ -73,11 +75,13 @@ public class EstudianteService {
      * @return Lista de DTOs de estudiantes ordenados.
      */
     public List<EstudianteResponseDTO> findAllByLU() {
-        List<EstudianteResponseDTO> estudiantes = this.findAll();
-        estudiantes.sort((e1, e2) -> e1.getLU().compareTo(e2.getLU()));
-        return estudiantes;
+        // Llama al nuevo métdo del repositorio que ya ordena en la BD
+        List<Estudiante> estudiantesOrdenados = estudianteRepository.findAllByOrderByLU();
+        // Mapea a DTO
+        return estudiantesOrdenados.stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
     }
-
     /**
      * Obtiene la lista de estudiantes filtrados por género.
      *
