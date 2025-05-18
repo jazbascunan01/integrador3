@@ -161,9 +161,13 @@ El endpoint `/estudiantes` soporta parámetros para ordenamiento dinámico:
 
 **Ejemplos:**
 
-1. Ordenar por apellido descendente:
+- Ordenar por apellido descendente:
 ```http
 GET /estudiantes?sortBy=apellido&sortDir=DESC
+```
+- Ordenar por apellido ascendente:
+```http
+GET /estudiantes?sortBy=apellido
 ```
 ---
 ## 🔍 Consultas Avanzadas
