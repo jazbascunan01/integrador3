@@ -15,21 +15,6 @@ Este proyecto fue desarrollado por el **Grupo N° 7**
 
 ---
 
-## 🌟 Características Principales
-
--   Gestión CRUD para Estudiantes (Alta, Lectura).
--   Matriculación de Estudiantes en Carreras con validaciones (existencia de estudiante/carrera, no duplicados) y establecimiento de antigüedad y graduación iniciales.
--   Carga automática de datos iniciales desde archivos CSV al arrancar la aplicación.
--   API RESTful completa para interactuar con los datos.
--   Consultas avanzadas y reportes, incluyendo:
-    -   Listado de todos los estudiantes con **ordenamiento dinámico y parametrizable**.
-    -   Búsqueda de estudiantes por Número de Libreta Universitaria (LU) y DNI.
-    -   Filtrado de estudiantes por género.
-    -   Listado de estudiantes por carrera y ciudad de residencia.
-    -   Listado de carreras ordenadas por cantidad de estudiantes inscriptos.
-    -   Reporte detallado de carreras con información de inscriptos y egresados por año.
-
----
 ## ✅ Requisitos
 
 1. **Java**: JDK 21 o superior.
