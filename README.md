@@ -79,33 +79,30 @@ El proyecto sigue una estructura estándar de Maven:
 
 ## **Estudiantes**
 
-| Método | Endpoint | Descripción | Parámetros |
-|--------|----------|-------------|------------|
-| `POST` | `/estudiantes` | Registrar un nuevo estudiante | `Estudiante` (JSON en body) |
-| `POST` | `/estudiantes/matricular` | Matricular estudiante en carrera | `EstudianteCarreraRequestDTO` (JSON en body) |
-| `GET` | `/estudiantes` | Obtener todos los estudiantes | Opcionales: `sortBy` (campo), `sortDir` (ASC/DESC) |
-| `GET` | `/estudiantes/lu` | Obtener estudiantes ordenados por LU | - |
-| `GET` | `/estudiantes/lu/{LU}` | Buscar estudiante por número de LU | Path: `LU` (entero) |
-| `GET` | `/estudiantes/genero/{genero}` | Filtrar estudiantes por género | Path: `genero` (String) |
-| `GET` | `/estudiantes/carrera/{nombreCarrera}/ciudad/{ciudadResidencia}` | Estudiantes por carrera y ciudad | Path: `nombreCarrera`, `ciudadResidencia` (Strings) |
-| `GET` | `/estudiantes/{id}` | Buscar estudiante por ID | Path: `id` (entero) |
+| Método | Endpoint                                                         | Descripción                          | Parámetros                                          |
+|--------|------------------------------------------------------------------|--------------------------------------|-----------------------------------------------------|
+| `POST` | `/estudiantes`                                                   | Registrar un nuevo estudiante        | `Estudiante` (JSON en body)                         |
+| `POST` | `/estudiantes/matricular`                                        | Matricular estudiante en carrera     | `EstudianteCarreraRequestDTO` (JSON en body)        |
+| `GET`  | `/estudiantes`                                                   | Obtener todos los estudiantes        | Opcionales: `sortBy` (campo), `sortDir` (ASC/DESC)  |
+| `GET`  | `/estudiantes/lu`                                                | Obtener estudiantes ordenados por LU | -                                                   |
+| `GET`  | `/estudiantes/lu/{LU}`                                           | Buscar estudiante por número de LU   | Path: `LU` (entero)                                 |
+| `GET`  | `/estudiantes/genero/{genero}`                                   | Filtrar estudiantes por género       | Path: `genero` (String)                             |
+| `GET`  | `/estudiantes/carrera/{nombreCarrera}/ciudad/{ciudadResidencia}` | Estudiantes por carrera y ciudad     | Path: `nombreCarrera`, `ciudadResidencia` (Strings) |
+| `GET`  | `/estudiantes/{id}`                                              | Buscar estudiante por ID             | Path: `id` (entero)                                 |
 
 ## **Carreras**
 
-| Método | Endpoint | Descripción |
-|--------|----------|-------------|
-| `GET` | `/carreras/conEstudiantes` | Carreras con cantidad de estudiantes (ordenadas) |
-| `GET` | `/carreras/reporte` | Reporte de carreras con inscriptos/egresados por año |
+| Método | Endpoint                   | Descripción                                          |
+|--------|----------------------------|------------------------------------------------------|
+| `GET`  | `/carreras/conEstudiantes` | Carreras con cantidad de estudiantes (ordenadas)     |
+| `GET`  | `/carreras/reporte`        | Reporte de carreras con inscriptos/egresados por año |
 
 ---
 
 ## 📌 Ejemplos de Uso
 
 ### **1. Registrar Estudiante**
-```http
-POST /estudiantes
-Content-Type: application/json
-
+```json
 {
     "dni": 40123456,
     "LU": 12345,
@@ -118,10 +115,7 @@ Content-Type: application/json
 ```
 
 ### 2. Matricular Estudiante en Carrera
-```http
-POST /estudiantes/matricular
-Content-Type: application/json
-
+```json
 {
     "idEstudiante": 1,
     "idCarrera": 3,
@@ -155,10 +149,10 @@ GET /carreras/reporte
 
 El endpoint `/estudiantes` soporta parámetros para ordenamiento dinámico:
 
-| Parámetro | Tipo | Requerido | Valores | Descripción |
-|-----------|------|-----------|---------|-------------|
-| `sortBy` | String | No | LU, nombre, apellido, edad, genero, ciudad | Campo por el cual ordenar los resultados |
-| `sortDir` | String | No | ASC, DESC | Dirección del ordenamiento (ascendente/descendente) |
+| Parámetro | Tipo   | Requerido | Valores                                    | Descripción                                         |
+|-----------|--------|-----------|--------------------------------------------|-----------------------------------------------------|
+| `sortBy`  | String | No        | LU, nombre, apellido, edad, genero, ciudad | Campo por el cual ordenar los resultados            |
+| `sortDir` | String | No        | ASC, DESC                                  | Dirección del ordenamiento (ascendente/descendente) |
 
 **Comportamiento:**
 - Si no se especifica `sortBy`: Se devuelve el orden natural de la base de datos
