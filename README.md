@@ -26,26 +26,22 @@ Este proyecto fue desarrollado por el **Grupo N° 7**
 
 ## 📂 Estructura del Proyecto
 
+El proyecto sigue una estructura estándar de Maven:
 
-### 1. **⚙️ Paquetes Principales**
-- **`controller`**:
-    - Contiene los controladores REST para manejar las solicitudes HTTP.
-- **`csv`**:
-    - Archivos CSV con datos iniciales: `estudiantes.csv`, `carreras.csv`, `estudianteCarrera.csv`.
-- **`repository`**:
-    - Interfaces para realizar consultas a la base de datos.
-- **`service`**:
-    - Lógica de negocio para las operaciones de estudiantes y carreras.
-
-### 2. **📜 Archivos CSV**
-- `estudiantes.csv`, `carreras.csv`, `estudianteCarrera.csv`:
-    - Datos iniciales para rellenar las tablas de la base de datos.
-
-### 3. **📂 Archivo de Colección para Postman**
-
-* **`collections`**:
-    * Archivo JSON con la colección de pruebas para Postman (`integrador3.postman_collection.json`).
-    * Contiene ejemplos de solicitudes para todos los endpoints del proyecto.
+-   `src/main/java/com/example/integrador3/`: Código fuente principal.
+    -   `controller/`: Controladores REST que manejan las solicitudes HTTP.
+    -   `model/`: Entidades JPA que representan las tablas de la base de datos.
+    -   `repository/`: Interfaces de Spring Data JPA para las operaciones de base de datos.
+    -   `service/`: Lógica de negocio de la aplicación.
+        -   `dto/`: Data Transfer Objects para las respuestas y solicitudes de la API.
+    -   `utils/`: Clases de utilidad, como `CargaDeDatos.java`.
+    -   `Integrador3Application.java`: Clase principal de Spring Boot.
+-   `src/main/resources/`:
+    -   `application.properties`: Archivo de configuración de la aplicación (conexión a BD, etc.).
+    -   `csv/`: Archivos CSV (`estudiantes.csv`, `carreras.csv`, `estudianteCarrera.csv`) con datos iniciales.
+-   `postman/`:
+    -   `Integrador 3.postman_collection.json`: Colección de Postman para probar todos los endpoints.
+-   `pom.xml`: Archivo de configuración de Maven (dependencias, plugins).
 
 ---
 
