@@ -1,7 +1,5 @@
 package com.example.integrador3.controller;
 
-import com.example.integrador3.model.Carrera;
-import com.example.integrador3.model.Estudiante;
 import com.example.integrador3.service.CarreraService;
 import com.example.integrador3.service.dto.carrera.CarreraResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
